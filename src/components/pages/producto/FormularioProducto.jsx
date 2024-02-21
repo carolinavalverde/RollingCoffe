@@ -1,7 +1,9 @@
 import { Form, Button } from "react-bootstrap";
+import { useForm } from "react-hook-form";
 
 
 const FormularioProducto = () => {
+const {register, handleSubmit, formState:{errors}} = useForm();
 
   return (
     <section className="container mainSection">

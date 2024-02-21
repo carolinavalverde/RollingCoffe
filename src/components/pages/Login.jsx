@@ -12,13 +12,13 @@ const FormularioLogin = () => {
           <Form>
             <Form.Group
               className="mb-3 container"
-              controlId="formCorreoElectronicoLogin"
+              // controlId="formCorreoElectronicoLogin"
             >
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
                 className="form-control bg-body-tertiary"
-                id="email"
+                // id="email"
                 placeholder="admin@rollingcode.com"
                 minlength="5"
                 maxlength="100"
@@ -27,13 +27,13 @@ const FormularioLogin = () => {
             </Form.Group>
             <Form.Group
               className="mb-3 container"
-              controlId="formContraseñaLogin"
+              // controlId="formContraseñaLogin"
             >
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"
                 className="form-control bg-body-tertiary"
-                id="password"
+                // id="password"
                 placeholder="Escribe tu contraseña"
                 minlength="8"
                 maxlength="15"
@@ -47,7 +47,7 @@ const FormularioLogin = () => {
             </div>
             <Form.Group
               className="mb-3 container"
-              controlId="formOlvidasteTuContraseñaLogin"
+              // controlId="formOlvidasteTuContraseñaLogin"
             >
               <Link to="/error">Olvidaste tu contraseña?</Link>
             </Form.Group>

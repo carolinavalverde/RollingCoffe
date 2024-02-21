@@ -1,15 +1,34 @@
 import { Button, Table } from "react-bootstrap";
 import ItemProducto from "./producto/ItemProducto";
-
+import { useEffect, useState } from "react";
+import { leerProductos } from "../../helpers/queries";
+import { Link } from "react-router-dom";
 
 const Administrador = () => {
+  const [productos, setProductos] = useState([]);
+
+  useEffect(() => {
+    //solicitar a la api traer los productos
+    obtenerProductos();
+  }, []);
+
+  const obtenerProductos = async () => {
+    const respuesta = await leerProductos();
+    if (respuesta.status === 200) {
+      const datos = await respuesta.json();
+      setProductos(datos);
+    } else {
+      //mostrar un mjs elegante de error al usuario de q en este momento no puede hacer esta transaccion
+    }
+  };
+
   return (
     <section className="container mainSection">
       <div className="d-flex justify-content-between align-items-center mt-5">
         <h1 className="display-4 ">Productos disponibles</h1>
-        <Button className="btn btn-primary" >
+        <Link className="btn btn-primary" to="/administrador/crear"> 
           <i className="bi bi-file-earmark-plus"></i>
-        </Button>
+        </Link>
       </div>
       <hr />
       <Table responsive striped bordered hover>
@@ -24,10 +43,9 @@ const Administrador = () => {
           </tr>
         </thead>
         <tbody>
-          <ItemProducto></ItemProducto>
-          <ItemProducto></ItemProducto>
-          <ItemProducto></ItemProducto>
-          <ItemProducto></ItemProducto>
+          {productos.map((producto) => (
+            <ItemProducto key={producto.id} producto={producto}></ItemProducto>
+          ))}
         </tbody>
       </Table>
     </section>
