@@ -22,12 +22,12 @@ const Menu = () => {
             </NavLink>
             <NavLink className="nav-link" to={"/administrador"}>
               Administrador
+            </NavLink>{" "}
+            <NavLink className="nav-link" to={"/login"}>
+              Login
             </NavLink>
             <NavLink className="nav-link" to={"/registro"}>
               Registro
-            </NavLink>
-            <NavLink className="nav-link" to={"/login"}>
-              Login
             </NavLink>
           </Nav>
         </Navbar.Collapse>
