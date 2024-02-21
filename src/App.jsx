@@ -26,6 +26,10 @@ function App() {
           element={<Administrador></Administrador>}
         ></Route>
         <Route
+          path="/administrador/crear"
+          element={<FormularioProducto></FormularioProducto>}
+        ></Route>
+        <Route
           path="/login"
           element={<Login></Login>}
         ></Route>
