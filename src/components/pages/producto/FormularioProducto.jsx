@@ -5,19 +5,34 @@ import { useForm } from "react-hook-form";
 const FormularioProducto = () => {
 const {register, handleSubmit, formState:{errors}} = useForm();
 
+const datosValidados = (producto)=> {
+ console.log(producto)
+}
+
   return (
     <section className="container mainSection">
       <h1 className="display-4 mt-5">Nuevo producto</h1>
       <hr />
-      <Form className="my-4">
+      <Form className="my-4" onSubmit={handleSubmit(datosValidados)}>
         <Form.Group className="mb-3" controlId="formNombreProdcuto">
           <Form.Label>Producto*</Form.Label>
           <Form.Control
             type="text"
             placeholder="Ej: Cafe"
+            {...register("nombreProducto",{
+              required: "El nombre del producto es un dato obligatorio",
+              minLength:{
+                value: 4,
+                message: "El nombre del producto debe tener como mínimo 4 caracteres"
+              },
+              maxLength:{
+                value: 50,
+                message: "El nombre del producto debe tener como máximo 50 caracteres"
+              }  
+           })}
           />
           <Form.Text className="text-danger">
-            prueba de error
+           {errors.nombreProducto?.message}
           </Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formPrecio">
