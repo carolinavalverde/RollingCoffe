@@ -21,7 +21,7 @@ const FormularioLogin = () => {
   const validarPassword = (value) => {
     return (
       /^(?=.*[A-Z])(?=.*\d).+$/.test(value) ||
-      "La contraseña debe contener al menos una mayúscula y un número"
+      "La contraseña debe tener al menos una mayúscula y un número"
     );
   };
 
