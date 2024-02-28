@@ -19,15 +19,6 @@
       "descripcion_amplia": "Nuestro jugo de naranja natural está hecho con naranjas frescas exprimidas a mano, sin adición de azúcares ni conservantes. Es una opción refrescante y saludable para acompañar tu desayuno o merienda."
     },
     {
-      "id": "d2a8",
-      "nombreProducto": "cafe",
-      "precio": "455",
-      "imagen": "https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg",
-      "categoria": "Infusiones",
-      "descripcion_breve": "gggggggggggggggggggggggggggggg",
-      "descripcion_amplia": "ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg"
-    },
-    {
       "id": "697b",
       "nombreProducto": "galletas de navidad",
       "precio": "400",

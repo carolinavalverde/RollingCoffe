@@ -16,11 +16,11 @@ export const leerProductos = async () => {
 export const crearProducto = async (productoNuevo) => {
   try {
     const respuesta = await fetch(APIProductos, {
-      method: "POST", 
+      method: "POST",
       headers: {
-        "Content-Type":"application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(productoNuevo)
+      body: JSON.stringify(productoNuevo),
     });
     console.log(respuesta);
     return respuesta;
@@ -30,4 +30,17 @@ export const crearProducto = async (productoNuevo) => {
 };
 
 //PUT o PATCH
+
 //DELETE
+
+export const borrarProducto = async (id) => {
+  try {
+    const respuesta = await fetch(APIProductos + `/` + id, {
+      method: "DELETE",
+    });
+    console.log(respuesta);
+    return respuesta;
+  } catch (error) {
+    console.log(error);
+  }
+};
