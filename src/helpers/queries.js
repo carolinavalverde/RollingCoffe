@@ -34,7 +34,7 @@ export const crearProducto = async (productoNuevo) => {
 //DELETE
 export const borrarProducto = async (id) => {
   try {
-    const respuesta = await fetch(APIPRoductos + "/" + id, {
+    const respuesta = await fetch(APIProductos + "/" + id, {
       method: "DELETE",
     });
     console.log(respuesta);
@@ -47,7 +47,7 @@ export const borrarProducto = async (id) => {
 //GET de un unico producto
 export const obtenerProducto = async (id) => {
   try {
-    const respuesta = await fetch(APIPRoductos + "/" + id);
+    const respuesta = await fetch(APIProductos + "/" + id);
     console.log(respuesta);
     return respuesta;
   } catch (error) {
