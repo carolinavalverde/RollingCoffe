@@ -5,28 +5,28 @@ import { leerProductos } from "../../helpers/queries";
 import { Link } from "react-router-dom";
 
 const Administrador = () => {
-  const [productos, setProductos] = useState([]);
+const [productos, setProductos] = useState([])
 
-  useEffect(() => {
-    //solicitar a la api traer los productos
+  useEffect(()=>{
+//solicitar a la api traer los productos
     obtenerProductos();
-  }, []);
+  }, [])
 
-  const obtenerProductos = async () => {
+  const obtenerProductos = async()=>{
     const respuesta = await leerProductos();
-    if (respuesta.status === 200) {
+    if(respuesta.status === 200){
       const datos = await respuesta.json();
       setProductos(datos);
-    } else {
-      //mostrar un mjs elegante de error al usuario de q en este momento no puede hacer esta transaccion
+    }else{
+      //mostrar un mensaje de error al usuario
     }
-  };
+  }
 
   return (
     <section className="container mainSection">
       <div className="d-flex justify-content-between align-items-center mt-5">
         <h1 className="display-4 ">Productos disponibles</h1>
-        <Link className="btn btn-primary" to="/administrador/crear"> 
+        <Link className="btn btn-primary" to='/administrador/crear'>
           <i className="bi bi-file-earmark-plus"></i>
         </Link>
       </div>
@@ -43,9 +43,9 @@ const Administrador = () => {
           </tr>
         </thead>
         <tbody>
-          {productos.map((producto) => (
-            <ItemProducto key={producto.id} producto={producto} setProductos={setProductos}></ItemProducto>
-          ))}
+          {
+            productos.map((producto)=>  <ItemProducto key={producto.id} producto={producto} setProductos={setProductos}></ItemProducto>)
+          }
         </tbody>
       </Table>
     </section>
