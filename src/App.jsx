@@ -31,6 +31,11 @@ function App() {
           path="/administrador/crear"
           element={<FormularioProducto></FormularioProducto>}
         ></Route>
+        <Route
+          exact
+          path="/administrador/editar/:id"
+          element={<FormularioProducto></FormularioProducto>}
+        ></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="*" element={<Error404></Error404>}></Route>;
       </Routes>

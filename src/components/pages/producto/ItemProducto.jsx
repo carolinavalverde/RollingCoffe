@@ -2,7 +2,8 @@ import { Button } from "react-bootstrap";
 import Swal from "sweetalert2";
 import { borrarProducto, leerProductos } from "../../../helpers/queries";
 
-const ItemProducto = ({ producto, setProducto }) => {
+const ItemProducto = ({ producto, setProductos }) => {
+
   const eliminarProducto = () => {
     Swal.fire({
       title: "está seguro de eliminar el producto?",
@@ -20,24 +21,21 @@ const ItemProducto = ({ producto, setProducto }) => {
         if (respuesta.status === 200) {
           Swal.fire({
             title: "Producto eliminado",
-            text: `El producto ${
-              (producto, nombreProducto)
-            } fue eliminado correctamente`,
+            text: `El producto ${producto.nombreProducto} fue eliminado correctamente`,
             icon: "success",
           });
+
           //actualizar tabla del administrador
           const respuestaNuevosProductos = await leerProductos();
           if (respuestaNuevosProductos.status === 200) {
-            const nuevosProductos = await respuestaNuevosProductos.json();
-            setProducto(nuevosProductos);
+            const nuevosProductos = await respuestaNuevosProductos.json()
+            setProductos(nuevosProductos);
           }
         } else {
           Swal.fire({
-            title: "Ocurrio un erro",
-            text: `El producto ${
-              (producto, nombreProducto)
-            } no fue eliminado correctamente, intente la operacion nuevamente`,
-            icon: "error",
+            title: "Ocurrio un error",
+            text: `El producto ${producto.nombreProducto} no fue eliminado, intente ésta operacion en unos minutos`,
+            icon: "error"
           });
         }
       }
@@ -58,9 +56,9 @@ const ItemProducto = ({ producto, setProducto }) => {
       </td>
       <td>{producto.categoría}</td>
       <td className="text-center">
-        <Button variant="warning" className="me-lg-2">
+        <Link className="me-lg-2 btn btn-warning" to={'/administrador/editar/'+ producto.id}>
           <i className="bi bi-pencil-square"></i>
-        </Button>
+        </Link>
         <Button variant="danger" onClick={eliminarProducto}>
           <i className="bi bi-trash"></i>
         </Button>

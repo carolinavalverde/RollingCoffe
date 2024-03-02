@@ -26,24 +26,6 @@
       "categoria": "Dulce",
       "descripcion_breve": "galletas de jengibre de navidad",
       "descripcion_amplia": " las galletas de jengibre son más que un simple postre; son una deliciosa expresión de la temporada festiva y una forma encantadora de disfrutar de los sabores especiados y reconfortantes del invierno."
-    },
-    {
-      "id": "097b",
-      "nombreProducto": "Galletas con chips de chocolate",
-      "precio": "1400",
-      "imagen": "https://images.pexels.com/photos/230325/pexels-photo-230325.jpeg",
-      "categoria": "Dulce",
-      "descripcion_breve": "galletas de vainilla con chips de chocolate",
-      "descripcion_amplia": "las galletitas con chips de chocolate son una deliciosa combinación de sabores y texturas que evocan una sensación de indulgencia y satisfacción dulce. Perfectas para satisfacer antojos y compartir con amigos y familiares."
-    },
-    {
-      "id": "93e5",
-      "nombreProducto": "macarons warning",
-      "precio": "1800",
-      "imagen": "https://images.pexels.com/photos/2014693/pexels-photo-2014693.jpeg",
-      "categoria": "Dulce",
-      "descripcion_breve": "macarons de vainilla y dulce de leche",
-      "descripcion_amplia": "los macarons son pequeños placeres que aúnan la perfección estética con sabores delicados. Su textura única y variedad de colores y sabores hacen que sean irresistibles para los amantes de la repostería y una opción apreciada en la gastronomía internacional."
     }
   ]
 }
