@@ -55,7 +55,7 @@ const FormularioProducto = ({ editando, titulo }) => {
       <h1 className="display-4 mt-5">{titulo}</h1>
       <hr />
       <Form className="my-4" onSubmit={handleSubmit(datosValidados)}>
-        <Form.Group className="mb-3" controlId="formNombreProdcuto">
+        <Form.Group className="mb-3" controlId="formNombreProducto">
           <Form.Label>Producto*</Form.Label>
           <Form.Control
             type="text"
@@ -117,7 +117,7 @@ const FormularioProducto = ({ editando, titulo }) => {
             {errors.imagen?.message}
           </Form.Text>
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formPrecio">
+        <Form.Group className="mb-3" controlId="formCategoria">
           <Form.Label>Categoría*</Form.Label>
           <Form.Select
             {...register("categoria", {
@@ -134,7 +134,7 @@ const FormularioProducto = ({ editando, titulo }) => {
             {errors.categoria?.message}
           </Form.Text>
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formImagen">
+        <Form.Group className="mb-3" controlId="formDescripcionBreve">
           <Form.Label>Descripción breve*</Form.Label>
           <Form.Control
             type="text"
@@ -156,7 +156,7 @@ const FormularioProducto = ({ editando, titulo }) => {
             {errors.descripcion_breve?.message}
           </Form.Text>
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formImagen">
+        <Form.Group className="mb-3" controlId="formDescripcionAmplia">
           <Form.Label>Descripción Amplia*</Form.Label>
           <Form.Control
             type="text"
