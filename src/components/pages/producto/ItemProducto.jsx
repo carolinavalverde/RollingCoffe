@@ -1,6 +1,7 @@
 import { Button } from "react-bootstrap";
 import Swal from "sweetalert2";
 import { borrarProducto, leerProductos } from "../../../helpers/queries";
+import { Link } from 'react-router-dom';
 
 const ItemProducto = ({ producto, setProductos }) => {
 
