@@ -1,9 +1,8 @@
-import React from "react";
-import { Form, Button } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { login } from "./../../helpers/queries";
+import { Form, Button, Container, Card } from "react-bootstrap";
 import Swal from "sweetalert2";
+import { useForm } from "react-hook-form";
+import { login } from "../../helpers/queries";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const {
@@ -32,77 +31,57 @@ const Login = () => {
     }
   };
 
-  const validarEmail = (value) => {
-    return value.includes("@") || "El email debe contener un '@'";
-  };
-
-  const validarPassword = (value) => {
-    return (
-      /^(?=.*[A-Z])(?=.*\d).+$/.test(value) ||
-      "La contraseña debe tener al menos una mayúscula y un número"
-    );
-  };
-
   return (
-    <section className="container mainSection">
-      <div className="card">
-        <div className="card-title bg-body-tertiary">
-          <h1 className="mx-3 my-2">Login</h1>
-        </div>
-        <div className="card-body">
+    <Container className="mainSection">
+      <Card className="my-5">
+        <Card.Header as="h5">Login</Card.Header>
+        <Card.Body>
           <Form onSubmit={handleSubmit(onSubmit)}>
-            <Form.Group className="mb-3 container">
+            <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email</Form.Label>
               <Form.Control
-                type="email"
-                className="form-control bg-body-tertiary"
-                placeholder="admin@rollingcode.com"
+                type="text"
+                placeholder="Ingrese un email"
                 {...register("email", {
-                  required: "El email es un campo obligatorio",
-                  validate: validarEmail,
+                  required: "El nombre de usuario es obligatorio",
+                  pattern: {
+                    value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
+                    message:
+                      "Ingrese una dirección de correo electrónico válida",
+                  },
                 })}
               />
               <Form.Text className="text-danger">
                 {errors.email?.message}
               </Form.Text>
             </Form.Group>
-            <Form.Group className="mb-3 container">
+
+            <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"
-                className="form-control bg-body-tertiary"
-                placeholder="Escribe tu contraseña"
+                placeholder="Password"
                 {...register("password", {
-                  required: "La contraseña es obligatoria",
-                  minLength: {
-                    value: 8,
+                  required: "El nombre de password es obligatorio",
+                  pattern: {
+                    value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
                     message:
-                      "La contraseña debe tener como mínimo 8 caracteres",
+                      "El password debe contener al menos una letra mayúscula, una letra minúscula y un número",
                   },
-                  maxLength: {
-                    value: 15,
-                    message:
-                      "La contraseña debe tener como máximo 15 caracteres",
-                  },
-                  validate: validarPassword,
                 })}
               />
               <Form.Text className="text-danger">
                 {errors.password?.message}
               </Form.Text>
             </Form.Group>
-            <div className="container">
-              <Button type="submit" variant="primary" className="mb-4">
-                Iniciar Sesión
-              </Button>
-            </div>
-            <Form.Group className="mb-3 container">
-              <Link to="/error">Olvidaste tu contraseña?</Link>
-            </Form.Group>
+
+            <Button variant="primary" type="submit">
+              Ingresar
+            </Button>
           </Form>
-        </div>
-      </div>
-    </section>
+        </Card.Body>
+      </Card>
+    </Container>
   );
 };
 

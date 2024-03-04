@@ -1,15 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-import Administrador from "../components/pages/Administrador";
-import FormularioProducto from "../components/pages/producto/FormularioProducto";
+import Administrador from "../pages/Administrador";
+import FormularioProducto from "../pages/producto/FormularioProducto";
 
 const RutasAdmin = () => {
   return (
     <Routes>
-      <Route
-        exact
-        path="/"
-        element={<Administrador></Administrador>}
-      ></Route>
+      <Route exact path="/" element={<Administrador></Administrador>}></Route>
       <Route
         exact
         path="/crear"
@@ -33,3 +29,5 @@ const RutasAdmin = () => {
     </Routes>
   );
 };
+
+export default RutasAdmin;
