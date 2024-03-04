@@ -1,17 +1,35 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { login } from "./../../helpers/queries";
+import Swal from "sweetalert2";
 
-const FormularioLogin = () => {
+const Login = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const navegacion = useNavigate();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = (usuario) => {
+    if (login(usuario)) {
+      //soy el admin
+      Swal.fire({
+        title: "Bienvenido",
+        text: `Ingresaste al panel de administración de RollingCoffee`,
+        icon: "success",
+      });
+      //redireccionar al admin
+      navegacion("/administrador");
+    } else {
+      Swal.fire({
+        title: "Ocurrio un error",
+        text: `Email o password incorrecto`,
+        icon: "error",
+      });
+    }
   };
 
   const validarEmail = (value) => {
@@ -88,4 +106,4 @@ const FormularioLogin = () => {
   );
 };
 
-export default FormularioLogin;
+export default Login;

@@ -8,7 +8,10 @@ import Administrador from "./components/pages/Administrador";
 import Inicio from "./components/pages/Inicio";
 import FormularioProducto from "./components/pages/producto/FormularioProducto";
 import DetalleProducto from "./components/pages/DetalleProducto";
+import Login from "./components/pages/Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import RutasProtegidas from "./components/routes/RutasProtegidas";
+import RutasAdmin from "./components/routes/RutasAdmin";
 
 function App() {
   return (
@@ -16,14 +19,19 @@ function App() {
       <Menu></Menu>
       <Routes>
         <Route path="/" element={<Inicio></Inicio>}></Route>
+        <Route path="/login" element={<Login></Login>}></Route>
         <Route
           path="/detalleproducto"
           element={<DetalleProducto></DetalleProducto>}
         ></Route>
         <Route
           exact
-          path="/administrador"
-          element={<Administrador></Administrador>}
+          path="/administrador*"
+          element={
+            <RutasProtegidas>
+              <RutasAdmin></RutasAdmin>
+            </RutasProtegidas>
+          }
         ></Route>
         <Route
           exact
