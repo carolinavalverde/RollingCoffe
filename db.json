@@ -1,13 +1,13 @@
 {
   "productos": [
     {
-      "id": "1",
       "nombreProducto": "Brownie de Chocolate",
-      "precio": 900,
+      "precio": "598",
       "imagen": "https://images.pexels.com/photos/2067396/pexels-photo-2067396.jpeg",
       "categoria": "Dulce",
       "descripcion_breve": "Un brownie denso y deliciosamente chocolatoso.",
-      "descripcion_amplia": "Nuestro brownie de chocolate es un placer indulgente para los amantes del chocolate. Con una textura densa y un intenso sabor a chocolate, es el acompañamiento perfecto para tu café o té."
+      "descripcion_amplia": "Nuestro brownie de chocolate es un placer indulgente para los amantes del chocolate. Con una textura densa y un intenso sabor a chocolate, es el acompañamiento perfecto para tu café o té.",
+      "id": "1"
     },
     {
       "id": "2",

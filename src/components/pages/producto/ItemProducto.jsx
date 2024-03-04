@@ -55,7 +55,7 @@ const ItemProducto = ({ producto, setProductos }) => {
           alt={producto.nombreProducto}
         ></img>
       </td>
-      <td>{producto.categoría}</td>
+      <td>{producto.categoria}</td>
       <td className="text-center">
         <Link className="me-lg-2 btn btn-warning" to={'/administrador/editar/'+ producto.id}>
           <i className="bi bi-pencil-square"></i>
