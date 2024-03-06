@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { login } from "../../helpers/queries";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({setUsuarioLogueado}) => {
+const Login = ({ setUsuarioLogueado }) => {
   const {
     register,
     handleSubmit,
@@ -21,7 +21,7 @@ const Login = ({setUsuarioLogueado}) => {
         icon: "success",
       });
       //guardar el usuario en el state
-      setUsuarioLogueado(usuario.email)
+      setUsuarioLogueado(usuario.email);
       //redireccionar al admin
       navegacion("/administrador");
     } else {
