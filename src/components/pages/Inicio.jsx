@@ -35,7 +35,7 @@ const Inicio = () => {
         <hr />
 
         <Row>
-          {productos.map((producto) => (
+          {productos.slice(0, 3).map((producto) => (
             <CardProducto key={producto.id} producto={producto}></CardProducto>
           ))}
         </Row>
