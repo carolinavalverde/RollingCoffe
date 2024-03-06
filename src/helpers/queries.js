@@ -69,17 +69,20 @@ export const obtenerProducto = async (id) => {
   }
 };
 
-//cuando tengamos el backend con un login enviar solicitud POST (envia solicitud al body)
+//cuando tengamos el backend con un login enviar solicitud POST
 const userAdmin = {
-  email:"admin@rollingcoffe.com",
+  email: "admin@rollingcoffee.com",
   password: "123Aa$123",
-}
+};
 
-export const login =(usuario)  =>{
- if(usuario.email === userAdmin.email && usuario.password === userAdmin.password){
-     sessionStorage.setItem("loginRollingCoffe", JSON.stringify(usuario.email));
-     return true
- }else{
-  return false
- }
+export const login = (usuario) => {
+  if (
+    usuario.email === userAdmin.email &&
+    usuario.password === userAdmin.password
+  ) {
+    sessionStorage.setItem("loginRollingCoffee", JSON.stringify(usuario.email));
+    return true;
+  } else {
+    return false;
+  }
 };
