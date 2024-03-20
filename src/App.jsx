@@ -9,6 +9,7 @@ import Inicio from "./components/pages/Inicio";
 import FormularioProducto from "./components/pages/producto/FormularioProducto";
 import DetalleProducto from "./components/pages/DetalleProducto";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Registro from "./components/pages/Registro";
 import Login from "./components/pages/Login";
 import RutasProtegidas from "./components/routes/RutasProtegidas";
 import RutasAdmin from "./components/routes/RutasAdmin";
@@ -36,6 +37,7 @@ function App() {
           path="/login"
           element={<Login setUsuarioLogueado={setUsuarioLogueado}></Login>}
         ></Route>
+         <Route path="/registro" element={<Registro></Registro>}></Route>
         <Route
           exact
           path="/administrador/*"

@@ -86,3 +86,18 @@ export const login = (usuario) => {
     return false;
   }
 };
+
+export const registrarUsuario = async (usuario) => {
+  try {
+    const respuesta = await fetch(APIRegistro, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(usuario),
+    });
+    return respuesta;
+  } catch (error) {
+    console.log(error);
+  }
+};
