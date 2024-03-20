@@ -61,7 +61,7 @@ export const borrarProducto = async (id) => {
 //GET de un unico producto
 export const obtenerProducto = async (id) => {
   try {
-    const respuesta = await fetch(APIProductos + "/" + id);
+    const respuesta = await fetch(APIProductos + "/"+ id);
     console.log(respuesta);
     return respuesta;
   } catch (error) {
@@ -84,5 +84,20 @@ export const login = (usuario) => {
     return true;
   } else {
     return false;
+  }
+};
+
+export const registrarUsuario = async (usuario) => {
+  try {
+    const respuesta = await fetch(APIRegistro, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(usuario),
+    });
+    return respuesta;
+  } catch (error) {
+    console.log(error);
   }
 };

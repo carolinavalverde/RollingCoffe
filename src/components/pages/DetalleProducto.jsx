@@ -1,61 +1,47 @@
 import { useEffect, useState } from "react";
+import { Container, Card, Row, Col } from "react-bootstrap";
 import { obtenerProducto } from "../../helpers/queries";
 import { useParams } from "react-router-dom";
-import { Container, Card, Row, Col } from "react-bootstrap";
-import Swal from "sweetalert2";
 
 const DetalleProducto = () => {
   const { id } = useParams();
-  const [producto, setProducto] = useState(null);
+  const [producto, setProducto] = useState({})
 
   useEffect(() => {
-    const cargarPoducto = async () => {
-      try {
-        const response = await obtenerProducto(id);
-        const data = await response.json();
-        setProducto(data);
-      } catch (error) {
-        console.error("Error al cargar el producto:", error);
-        Swal.fire({
-          title: "El producto no se pudo cargar",
-          text: `Intentelo nuevamente más tarde.`,
-          icon: "error",
-        });
-      }
-    };
+      cargarProducto();
+  }, []);
 
-    cargarPoducto();
-  }, [id]);
+  const cargarProducto = async () => {
+    const respuesta = await obtenerProducto(id);
+    if (respuesta.status === 200) {
+      //extraer el producto de la respuesta
+      const productoBuscado = await respuesta.json();
+      setProducto(productoBuscado)
+    }
+  };
 
-  if (!producto) {
-    return null;
-  }
-
-  const { imagen, nombreProducto, descripcion, categoria, precio } = producto;
 
   return (
     <Container className="my-3 mainSection">
       <Card>
         <Row>
           <Col md={6}>
-            <Card.Img variant="top" className="img-fluid" src={imagen} />
+            <Card.Img
+              variant="top"
+              src={producto.imagen}
+              alt={producto.nombreProducto}
+            />
           </Col>
           <Col md={6}>
             <Card.Body>
-              <Card.Title className="primary-font">{nombreProducto}</Card.Title>
+              <Card.Title className="primary-font">{producto.nombreProducto}</Card.Title>
               <hr />
               <Card.Text>
-                {descripcion}
-                <br />
-                <br />
-                <span className="primary-font fw-semibold">
-                  Categoría:
-                </span>{" "}
-                {categoria}
-                <br className="mb-3" />
-                <span className="primary-font fw-semibold">Precio:</span> $
-                {precio}
-              </Card.Text>
+              {producto.descripcion_amplia}
+              <br/>
+              <span className="primary-font fw-semibold ">Categoria:</span> {producto.categoria}
+              <br className='mb-3'/>
+              <span className="primary-font fw-semibold ">Precio: ${producto.precio}</span></Card.Text>
             </Card.Body>
           </Col>
         </Row>
