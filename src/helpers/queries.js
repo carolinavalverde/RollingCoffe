@@ -61,7 +61,7 @@ export const borrarProducto = async (id) => {
 //GET de un unico producto
 export const obtenerProducto = async (id) => {
   try {
-    const respuesta = await fetch(APIProductos + "/" + id);
+    const respuesta = await fetch(APIProductos + id);
     console.log(respuesta);
     return respuesta;
   } catch (error) {
