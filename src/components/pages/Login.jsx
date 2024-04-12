@@ -12,16 +12,21 @@ const Login = ({ setUsuarioLogueado }) => {
   } = useForm();
   const navegacion = useNavigate();
 
-  const onSubmit = (usuario) => {
-    if (login(usuario)) {
+  const onSubmit = async (usuario) => {
+    const respuesta = await login(usuario); 
+    if (respuesta.status === 200) {
       //soy el admin
       Swal.fire({
         title: "Bienvenido",
         text: `Ingresaste al panel de administración de RollingCoffee`,
         icon: "success",
       });
+      const datos = await respuesta.json();
+      sessionStorage.setItem("usuarioRollingCoffe",
+      JSON.stringify({ email: datos.email, token: datos.token })
+    );
       //guardar el usuario en el state
-      setUsuarioLogueado(usuario.email);
+      setUsuarioLogueado(datos);
       //redireccionar al admin
       navegacion("/administrador");
     } else {
