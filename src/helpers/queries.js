@@ -19,6 +19,7 @@ export const crearProducto = async (productoNuevo) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "x-token": JSON.parse(sessionStorage.getItem("usuarioRollingCoffe")).token
       },
       body: JSON.stringify(productoNuevo),
     });
@@ -70,22 +71,40 @@ export const obtenerProducto = async (id) => {
 };
 
 //cuando tengamos el backend con un login enviar solicitud POST
-const userAdmin = {
-  email: "admin@rollingcoffee.com",
-  password: "123Aa$123",
-};
+//  const userAdmin = {
+//   email: "admin@rollingcoffee.com",
+//    password: "123Aa$123",
+//  };
 
-export const login = (usuario) => {
-  if (
-    usuario.email === userAdmin.email &&
-    usuario.password === userAdmin.password
-  ) {
-    sessionStorage.setItem("loginRollingCoffee", JSON.stringify(usuario.email));
-    return true;
-  } else {
-    return false;
+// export const login = (usuario) => {
+//   if (
+//     usuario.email === userAdmin.email &&
+//     usuario.password === userAdmin.password
+//   ) {
+//     sessionStorage.setItem("loginRollingCoffee", JSON.stringify(usuario.email));
+//     return true;
+//   } else {
+//     return false;
+//   }
+// };
+
+//nuevo login usando el backend
+export const login = async (usuario) => {
+  try {
+    console.log(usuario);
+    const respuesta = await fetch(URL_Usuario, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(usuario),
+    });
+    return respuesta
+  } catch (error) {
+    console.log("errores en el login");
+    return
   }
-};
+}
 
 export const registrarUsuario = async (usuario) => {
   try {
